@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <header>
+    	<h1>いちばんいっぱい</h1>
+    	<p>—— 放课後ティータイム ——</p>
+    </header>
+    <section id="play-show">
+    	<div id="cover">
+    		<img src="images/Unmei_wa_Endless.jpg" />
+    	</div>
+    </section>
+    <section id="panel">
+    	<div class="progress">
+    		<div id="cur-time">00:18</div>
+    		<div id="bar">
+    			<div class="inner-bar"></div>
+    			<div class="cur-point"></div>
+    		</div>
+    		<div id="total-time">04:10</div>
+    	</div>
+    	<div class="play-control clearfix">
+    		<div id="pre"></div>
+    		<div id="pause-play"></div>
+    		<div id="next"></div>
+    	</div>
+    	<div class="action clearfix">
+    		<ul class="clearfix">
+    			<li id="favo-btn"></li>
+    			<li id="mode-btn"></li>
+    			<li id="download-btn"></li>
+    			<li id="share-btn"></li>
+    			<li id="list-btn"></li>
+    		</ul>
+    	</div>
+    </section>
+    <section id="play-list" style="display: none;">
+    	<div class="play-list">
+    		<div class="list-title">
+    			<div class="list-title-l"></div>
+    			<div id="list-title-c">重复播放队列(3首)</div>
+    			<div class="list-title-r">清空</div>
+    		</div>
+    		<ul>
+    			<li>
+    				<span class="list-song-title">いちばんいっぱい</span>
+	    			<span class="list-singer"> - 放课後ティータイム</span>
+	    			<span class="list-remove"></span>
+	    		</li>
+	    		<li>
+    				<span class="list-song-title">いちばんいっぱい</span>
+	    			<span class="list-singer"> - 放课後ティータイム</span>
+	    			<span class="list-remove"></span>
+	    		</li>
+	    		<li>
+    				<span class="list-song-title">いちばんいっぱい</span>
+	    			<span class="list-singer"> - 放课後ティータイム</span>
+	    			<span class="list-remove"></span>
+	    		</li>
+	    		<li>
+    				<span class="list-song-title">いちばんいっぱい</span>
+	    			<span class="list-singer"> - 放课後ティータイム</span>
+	    			<span class="list-remove"></span>
+	    		</li>
+    		</ul>
+    		<div id="close-list">关闭</div>
+    	</div>
+    </section>
+    <script type="text/javascript" src="javascripts/script.js"></script>
+  </body>
+</html>

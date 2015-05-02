@@ -1,0 +1,196 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {
+  font-size: 12px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+a {
+  text-decoration: none;
+}
+li {
+	list-style-type: none;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
+.clearfix {
+	*zoom: 1;
+}
+
+header {
+	color: white;
+}
+
+#cover {
+	width: 300px;
+	height: 300px;
+	border: 2px solid rgba(0, 0, 0, .8);
+	border-radius: 50%;
+	overflow: hidden;
+}
+#cover img {
+	width: inherit;
+	height: inherit;
+}
+
+#cur-time, #total-time {
+	width: 50px;
+	color: #ccc;
+	text-align: center;
+}
+#cur-time {
+	float: left;
+}
+#total-time {
+	float: right;
+}
+#bar {
+	position: relative;
+	height: 10px;
+	background: rgba(0, 0, 0, .3);
+	margin: 0 60px;
+}
+.inner-bar {
+	background: #31C27C;
+	width: 47%;
+	height: inherit;
+}
+.cur-point {
+	position: absolute;
+	left: 46%;
+	top: -5px;
+	height: 20px;
+	width: 20px;
+	background: #31C27C;
+	border-radius: 50%;
+	cursor: pointer;
+
+}
+
+#pre, #next, #pause-play {
+	width: 128px;
+	height: 128px;
+	float: left;
+	cursor: pointer;
+}
+#pre {
+	background: url(../images/player_btn_pre_normal.png) no-repeat;
+}
+#pre:hover {
+	background: url(../images/player_btn_pre_highlight.png) no-repeat;
+}
+#next {
+	background: url(../images/player_btn_next_normal.png) no-repeat;
+}
+#next:hover {
+	background: url(../images/player_btn_next_highlight.png) no-repeat;
+}
+#pause-play {
+	background: url(../images/player_btn_play_normal.png) no-repeat;	
+}
+#pause-play:hover {
+	background: url(../images/player_btn_play_highlight.png) no-repeat;	
+}
+
+.action {
+	padding: 50px 80px;
+}
+.action li {
+	float: left;
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+}
+#favo-btn {
+	background: url(../images/player_btn_favorite_normal.png) no-repeat;		
+}
+#mode-btn {
+	background: url(../images/player_btn_repeat_normal.png) no-repeat;		
+}
+#download-btn {
+	background: url(../images/player_btn_download_normal.png) no-repeat;		
+}
+#share-btn {
+	background: url(../images/player_btn_share_normal.png) no-repeat;		
+}
+#list-btn {
+	background: url(../images/player_btn_playlist_normal.png) no-repeat;		
+}
+#favo-btn:hover {
+	background: url(../images/player_btn_favorite_highlight.png) no-repeat;		
+}
+#mode-btn:hover {
+	background: url(../images/player_btn_repeat_highlight.png) no-repeat;		
+}
+#download-btn:hover {
+	background: url(../images/player_btn_download_highlight.png) no-repeat;		
+}
+#share-btn:hover {
+	background: url(../images/player_btn_share_highlight.png) no-repeat;		
+}
+#list-btn:hover {
+	background: url(../images/player_btn_playlist_highlight.png) no-repeat;		
+}
+
+
+.play-list {
+	height: 60%;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, .8);
+	color: white;
+}
+
+.list-title {
+	position: relative;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 140%;
+	border-bottom: 2px solid rgba(255, 255, 255, .2);
+}
+.list-title-l, .list-title-r {
+	width: 50px;
+	height: 50px;
+}
+.list-title-l {
+	float: left;
+}
+.list-title-r {
+	float: right;
+}
+#list-title-c {
+	position: absolute;
+	left: 50px;
+	right: 50px;
+}
+
+.play-list li {
+	height: 45px;
+	line-height: 45px;
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
+	padding: 0 20px;
+	cursor: pointer;
+}
+.list-song-title {
+	font-size: 120%;
+}
+.list-singer {
+	color: #ccc;
+}
+#close-list {
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	cursor: pointer;
+}
