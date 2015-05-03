@@ -24,7 +24,7 @@ if (filenames[0]) {
     </section>
     <section id="panel">
     	<div class="time-line clearfix">
-    		<div id="cur-time"></div>
+    		<div id="cur-time">0:00</div>
     		<div id="time-bar">
     			<div class="inner-bar"></div>
     			<div class="cur-point"></div>
@@ -51,7 +51,7 @@ if (filenames[0]) {
     		<div class="list-title">
     			<div class="list-title-l"></div>
     			<div id="list-title-c">重复播放队列(<%= filenames.length %>首)</div>
-    			<div class="list-title-r">清空</div>
+    			<div class="list-title-r"></div>
     		</div>
     		<ul id="play-list-cont">
                 <% filenames.forEach(function(filename) { 

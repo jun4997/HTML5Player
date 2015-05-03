@@ -12,6 +12,7 @@ $.delegate = function (element, tag, eventName, listener) {
 }
 //////////////////////////////////////////////////////////////////
 var player = new Player(document.getElementById('play-list-cont'));
+player.setVol(0.3);
 
 var BASE_IMG_URL = 'images/';
 var playList = document.getElementById('play-list');
@@ -19,6 +20,7 @@ var volumeMenu = document.getElementById('volume');
 var listBtn = document.getElementById('list-btn');
 
 var timeBar = document.getElementById('time-bar');
+var timeBarInnerBar = timeBar.getElementsByTagName('div')[0];
 var timeBarPoint = timeBar.getElementsByTagName('div')[1];
 var volOut = document.getElementById('vol-out');
 var volPoint = volOut.getElementsByTagName('div')[1];
@@ -39,6 +41,10 @@ document.body.appendChild(canvas);
 var canvasCtx = canvas.getContext('2d');
 // canvas上的点
 var dots = [];
+
+var timer;
+var playTime = 0;
+var curTime = document.getElementById('cur-time');
 
 Player.prototype.draw = function (arr) {
 	canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
@@ -139,6 +145,18 @@ function switchSongChangeUI () {
 	var tmpFilename = player.getCurFileName();
 	coverImg.src = BASE_IMG_URL + tmpFilename.substring(0, tmpFilename.lastIndexOf('.')) + '.jpg';
 	// 改变时间轴
+	playTime = 0;
+	timer = setInterval(function () {
+		playTime++;
+		if (playTime > player.getCurSongDuration()) {
+			clearInterval(timer);timer=null;playTime=0;curTime.innerHTML = '0:0';
+			player.next();return;
+		}
+		curTime.innerHTML = Math.floor(playTime / 60) + ':' + Math.ceil(playTime % 60);
+		var percent = playTime / player.getCurSongDuration() * 100;
+		timeBarInnerBar.style.width = percent + '%';
+		timeBarPoint.style.left = percent + '%';
+	}, 1000);
 	var duration = document.getElementById('duration');
 	duration.innerHTML = Math.floor(player.getCurSongDuration() / 60)
 		+ ':' + Math.ceil(player.getCurSongDuration() % 60);
@@ -270,6 +288,7 @@ function Player (ul) {
 
 	function stop () {
 		bufferSource && bufferSource[bufferSource.stop ? 'stop' : 'noteOff']();
+		if (timer) {clearInterval(timer);}
 	}
 
 	function pre () {
