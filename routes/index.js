@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 		if (err) {
 			console.log(err);
 		} else {
-			res.render('index', { title: 'BZMusic - BZ音乐', filenames: filenames });
+			res.render('index', { title: 'HTML5Player - GitHub-liangbizhi', filenames: filenames });
 		}
 	});
 });
