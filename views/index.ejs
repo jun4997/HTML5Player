@@ -1,3 +1,11 @@
+<%
+if (filenames[0]) {
+    var arr1 = filenames[0].split(/\s*-\s*/);
+    var singer1 = arr1[0];
+    var songName1 = arr1[1].split(/\./)[0];
+    var subname1 = filenames[0].substring(0, filenames[0].lastIndexOf('.'));
+}
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,35 +14,35 @@
   </head>
   <body>
     <header>
-    	<h1>いちばんいっぱい</h1>
-    	<p>—— 放课後ティータイム ——</p>
+    	<h1><%= songName1 || '' %></h1>
+    	<p>— <%= singer1 || '' %> —</p>
     </header>
     <section id="play-show">
     	<div id="cover">
-    		<img src="images/Unmei_wa_Endless.jpg" />
+    		<img src="images/<%= subname1 || '' %>.jpg" />
     	</div>
     </section>
     <section id="panel">
-    	<div class="progress">
-    		<div id="cur-time">00:18</div>
-    		<div id="bar">
+    	<div class="time-line clearfix">
+    		<div id="cur-time"></div>
+    		<div id="time-bar">
     			<div class="inner-bar"></div>
     			<div class="cur-point"></div>
     		</div>
-    		<div id="total-time">04:10</div>
+    		<div id="duration"></div>
     	</div>
     	<div class="play-control clearfix">
-    		<div id="pre"></div>
-    		<div id="pause-play"></div>
-    		<div id="next"></div>
+    		<div id="pre"><img src="images/player_btn_pre_normal.png" alt="上一首"></div>
+    		<div id="pause-play" title="播放"><img src="images/player_btn_play_normal.png" alt="暂停/播放"></div>
+    		<div id="next"><img src="images/player_btn_next_normal.png" alt="下一首"></div>
     	</div>
     	<div class="action clearfix">
     		<ul class="clearfix">
-    			<li id="favo-btn"></li>
-    			<li id="mode-btn"></li>
-    			<li id="download-btn"></li>
-    			<li id="share-btn"></li>
-    			<li id="list-btn"></li>
+    			<li id="favo-btn"><img src="images/player_btn_favorite_normal.png" alt="喜欢" /></li>
+    			<li id="mode-btn"><img src="images/player_btn_repeat_normal.png" alt="播放模式" /></li>
+    			<li id="download-btn"><img src="images/player_btn_download_normal.png" alt="下载" /></li>
+    			<li id="share-btn"><img src="images/player_btn_share_normal.png" alt="分享" /></li>
+    			<li id="list-btn"><img src="images/player_btn_playlist_normal.png" alt="播放列表" /></li>
     		</ul>
     	</div>
     </section>
@@ -42,34 +50,31 @@
     	<div class="play-list">
     		<div class="list-title">
     			<div class="list-title-l"></div>
-    			<div id="list-title-c">重复播放队列(3首)</div>
+    			<div id="list-title-c">重复播放队列(<%= filenames.length %>首)</div>
     			<div class="list-title-r">清空</div>
     		</div>
-    		<ul>
-    			<li>
-    				<span class="list-song-title">いちばんいっぱい</span>
-	    			<span class="list-singer"> - 放课後ティータイム</span>
-	    			<span class="list-remove"></span>
+    		<ul id="play-list-cont">
+                <% filenames.forEach(function(filename) { 
+                    var arr = filename.split(/\s*-\s*/);
+                    var singer = arr[0];
+                    var songName = arr[1].split(/\./)[0];
+                %>
+    			<li title="<%= filename %>">
+    				<span class="list-song-title"><%= songName %></span>
+	    			<span class="list-singer"> - <%= singer %></span>
+	    			<div class="list-remove"><img src="images/list_btn_delete.png" width="40px" height="40px" /></div>
 	    		</li>
-	    		<li>
-    				<span class="list-song-title">いちばんいっぱい</span>
-	    			<span class="list-singer"> - 放课後ティータイム</span>
-	    			<span class="list-remove"></span>
-	    		</li>
-	    		<li>
-    				<span class="list-song-title">いちばんいっぱい</span>
-	    			<span class="list-singer"> - 放课後ティータイム</span>
-	    			<span class="list-remove"></span>
-	    		</li>
-	    		<li>
-    				<span class="list-song-title">いちばんいっぱい</span>
-	    			<span class="list-singer"> - 放课後ティータイム</span>
-	    			<span class="list-remove"></span>
-	    		</li>
+	    		<% }); %>
     		</ul>
-    		<div id="close-list">关闭</div>
     	</div>
     </section>
+    <div id="volume" class="clearfix" style="display: none;">
+        <div class="volume-icon"><img src="images/playing_volumn_slide_sound_icon_pressed.png" alt="音量"></div>
+        <div id="vol-out">
+            <div id="vol-in"></div>
+            <div id="vol-point"></div>
+        </div>
+    </div>
     <script type="text/javascript" src="javascripts/script.js"></script>
   </body>
 </html>
