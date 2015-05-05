@@ -2,6 +2,8 @@
 
 ## 简介
 
+[在线演示](http://h5player.sturgeon.mopaas.com/ "在线演示")
+
 ![运行截图](html5_player.png "运行截图")
 
 * 酷炫
